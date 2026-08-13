@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const userModel = require('./models/user');
+const CarModel = require('./models/car');
 
 
 app.set('view engine', 'ejs');
@@ -17,29 +17,29 @@ app.get('/create', (req, res) => {
 app.post('/create', async (req, res) => {
 let {name, email, imageurl} = req.body;
 
-let createdUser= await  userModel.create({name, email, imageurl})
+let createdCar= await  CarModel.create({name, email, imageurl})
 res.redirect('/read');
 });
 
 app.get('/read', async (req, res) => {
-  let users = await userModel.find();
-  res.render('read', { users });
+  let Cars = await CarModel.find();
+  res.render('read', { Cars });
 });
 
 
 app.get('/delete/:id', async (req, res) => {
-  let users = await userModel.findOneAndDelete({ _id: req.params.id });
+  let Cars = await CarModel.findOneAndDelete({ _id: req.params.id });
   res.redirect('/read');
 });
 
 app.get('/edit/:id', async (req, res) => {
-  let user = await userModel.findOne({ _id: req.params.id });
-  res.render('edit', { user });
+  let Car = await CarModel.findOne({ _id: req.params.id });
+  res.render('edit', { Car });
 });
 
 app.post('/update/:id', async (req, res) => {
   let { name, email, imageurl } = req.body;
-  let updatedUser = await userModel.findOneAndUpdate({ _id: req.params.id }, { name, email, imageurl }, { new: true });
+  let updatedCar = await CarModel.findOneAndUpdate({ _id: req.params.id }, { name, email, imageurl }, { new: true });
   res.redirect('/read');
 });
 
@@ -52,7 +52,7 @@ app.listen(3000);
 
 
 
-// const userModel = require('./usermodel');
+// const CarModel = require('./Carmodel');
 
 
 // app.get('/', (req, res) => {
@@ -60,32 +60,32 @@ app.listen(3000);
 // });
 
 // app.get('/create', async (req, res) => {
-//    let createdUser = await userModel.create({
+//    let createdCar = await CarModel.create({
 //     name: 'maddie',
-//     username: 'maddoe',
+//     Carname: 'maddoe',
 //     email: 'maddoe@example.com'
 //   });
-//   res.send('User created successfully!');
+//   res.send('Car created successfully!');
 // });
 
 // app.get('/update', async (req, res) => {
-//    let updatedUser = await userModel.findOneAndUpdate({
-//    username:"johndoe"}, { name: 'Jane Doe' });
+//    let updatedCar = await CarModel.findOneAndUpdate({
+//    Carname:"johndoe"}, { name: 'Jane Doe' });
   
-//   res.send(`User updated successfully! ${updatedUser}`);
+//   res.send(`Car updated successfully! ${updatedCar}`);
 // });
 
 // app.get('/read', async (req, res) => {
-//   //  let allUsers = await userModel.findOne({ username: 'maddoe' });
-//   //  let allUsers = await userModel.find({ username: 'maddoe' });
-//    let allUsers = await userModel.find();
-//   res.send(`All users: ${allUsers}`);
+//   //  let allCars = await CarModel.findOne({ Carname: 'maddoe' });
+//   //  let allCars = await CarModel.find({ Carname: 'maddoe' });
+//    let allCars = await CarModel.find();
+//   res.send(`All Cars: ${allCars}`);
 // });
 
 // app.get('/delete', async (req, res) => {
   
-//    let delUsers = await userModel.findOneAndDelete({ username: 'maddoe' });
-//   res.send(`Deleted users: ${delUsers}`);
+//    let delCars = await CarModel.findOneAndDelete({ Carname: 'maddoe' });
+//   res.send(`Deleted Cars: ${delCars}`);
 // });
 
 // app.listen(3000);

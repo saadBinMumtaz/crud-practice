@@ -8,17 +8,17 @@
 </head>
  <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
 <body class="bg-zinc-800 min-h-screen">
-    <h1 class="text-white text-3xl font-bold text-center mt-5">User Management</h1>
+    <h1 class="text-white text-3xl font-bold text-center mt-5">Car Management</h1>
     <div class="nav text-zinc-300">
-        <a href="/create" class="text-amber-300 hover:text-amber-400">Create User</a>
-        <a href="/read" class="text-amber-300 hover:text-amber-400">Read Users</a>
+        <a href="/create" class="text-amber-300 hover:text-amber-400">Create Car</a>
+        <a href="/read" class="text-amber-300 hover:text-amber-400">Read Cars</a>
     </div>
-    <h2 class="text-white text-xl font-bold mt-25">Edit User</h2>
-    <form action="/update/<%= user._id %>" method="post" class="flex flex-col items-center gap-10 mt-5">
+    <h2 class="text-white text-xl font-bold mt-25">Edit Car</h2>
+    <form action="/update/<%= Car._id %>" method="post" class="flex flex-col items-center gap-10 mt-5">
 
-        <input value="<%= user.name %>" name="name" type="text" placeholder="name" class=" mx-auto mt-7 p-2 rounded border border-gray-300 outline-none ">
-        <input value="<%= user.email %>" name="email" type="text" placeholder="email" class=" mx-auto mt-7 p-2 rounded border border-gray-300 outline-none ">
-        <input value="<%= user.imageurl %>" name="imageurl" type="text" placeholder="imageurl" class=" mx-auto mt-7 p-2 rounded border border-gray-300 outline-none ">
+        <input value="<%= Car.name %>" name="name" type="text" placeholder="name" class=" mx-auto mt-7 p-2 rounded border border-gray-300 outline-none ">
+        <input value="<%= Car.email %>" name="email" type="text" placeholder="email" class=" mx-auto mt-7 p-2 rounded border border-gray-300 outline-none ">
+        <input value="<%= Car.imageurl %>" name="imageurl" type="text" placeholder="imageurl" class=" mx-auto mt-7 p-2 rounded border border-gray-300 outline-none ">
        <input type="submit" value="Submit" class=" mx-auto mt-7 py-2 px-6 rounded border border-gray-300 outline-none bg-blue-500 text-white cursor-pointer hover:bg-blue-600">
     </form>
 </body>
